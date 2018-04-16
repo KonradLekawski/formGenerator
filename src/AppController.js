@@ -1,21 +1,13 @@
-import {shortTextController} from "./shortTextFunctionalities/ShortTextController.js";
+import { IdGenerator } from "/utils/IdGenerator.js";
+import { ShortTextQuestionView } from "/Questions/ShortTextQuestion/ShortTextQuestionView.js";
+import { ShortTextQuestionController } from "/Questions/ShortTextQuestion/ShortTextQuestionController.js";
+import { SimpleElementFactory } from "/SimpleElements/SimpleElementFactory.js";
 
-const AppController = (function (shortTextCTRL) {
+let idGenerator = new IdGenerator();
 
-    {
-        // update view co zmiane w środku ?
-        document.querySelector('.survey').addEventListener('change', (e) => {
-            refresh();
-        });
+let simpleElementFactory = new SimpleElementFactory(idGenerator);
 
-        // jakis button z formularzem?
-        document.querySelector('.add__shortText').addEventListener('click', (e) => {
-            shortTextCTRL.addShortText();
-        })
-    }
+let q1C = new ShortTextQuestionController(idGenerator, simpleElementFactory);
+let q1V = new ShortTextQuestionView(q1C);
 
-    function refresh() {
-
-    }
-
-})(shortTextController);
+document.getElementById("survey").appendChild(q1V.element);
