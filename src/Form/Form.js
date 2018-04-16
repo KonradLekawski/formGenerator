@@ -1,12 +1,15 @@
 export class Form {
     constructor(id) {
         var self = this;
+        this.type = "form";
+        this.id = id;
         this.name = name;
         this.questions = [];
+        this.observers = [];
     }
 
-    get id() {
-        return this.id;
+    addQuestion(question) {
+        this.questions.push(question);
     }
 
     registerObserver(observer) {
@@ -14,12 +17,9 @@ export class Form {
     }
     
     notifyAll() {
-        for(let observer in this.observers) {
+        for(let observer of this.observers) {
             observer.update(self);
         }
     }
-
-
-    
 
 }

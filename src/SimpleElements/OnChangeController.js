@@ -8,7 +8,7 @@ export class OnChangeController {
         e.stopPropagation();
         switch(e.type) {
             case "change":
-            self.changeHandler(e.target);
+            this.changeHandler(e.target);
                 break;
             default:
             console.log(e.target);

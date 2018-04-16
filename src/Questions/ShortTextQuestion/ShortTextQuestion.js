@@ -1,10 +1,11 @@
 export class ShortTextQuestion{
-    constructor(id) {
+    constructor(id, model) {
         var self = this;
         this._id = id;
         this.type = "question-short";
         this.title = "";
         this.value = "";
+        this.model = model;
         this.observers = [];
     }
 
@@ -17,7 +18,7 @@ export class ShortTextQuestion{
     }
     
     notifyAll() {
-        for(let observer in this.observers) {
+        for(let observer of this.observers) {
             observer.update(self);
         }
     }
