@@ -1,16 +1,33 @@
-export class ShortTextQuestion{
-    constructor(id, model) {
+import { ShortTextQuestionView } from "/Questions/ShortTextQuestion/ShortTextQuestionView.js";
+
+export class ShortTextQuestion {
+    constructor(idGenerator, simpleElementFactory, title, defaultValue) {
         var self = this;
-        this._id = id;
-        this.type = "question-short";
-        this.title = "";
-        this.value = "";
-        this.model = model;
+        this._simpleElementFactory = simpleElementFactory;
+
+        this.model = {};
         this.observers = [];
+
+        let titleView = this._simpleElementFactory.getSimpleElementView("title", [self], title);
+        let textInputView = this._simpleElementFactory.getSimpleElementView("text-input", [self], defaultValue);
+
+        this.view = new ShortTextQuestionView(titleView, textInputView);
     }
 
-    get id() {
-        return this._id;
+    update(notifyingModel) {
+        switch(notifyingModel.objectType) {
+            case "text-input":
+                this.model["value"] = notifyingModel.value;
+                break;
+            case "title":
+                this.model["label"] = notifyingModel.value;
+                break
+
+            default:
+                console.log("unknown type of model");
+        }
+
+        this.notifyAll();
     }
 
     registerObserver(observer) {

@@ -1,16 +1,13 @@
 export class ShortTextQuestionView {
-    constructor(controller) {
-        this.controller = controller;
-        this.element = this.createElement();
+    constructor(titleView, textInputView) {
+        this.element = this.createElement(titleView, textInputView);
         this.registerEvents();
-        this.controller.model.registerObserver(this);
     }
 
-    createElement() {
+    createElement(titleView, textInputView) {
         let elem = document.createElement('div');
-        elem.appendChild(this.controller.titleView.element);
-        elem.appendChild(this.controller.textInputView.element);
-        elem.id = this.controller.model.id;
+        elem.appendChild(titleView.element);
+        elem.appendChild(textInputView.element);
         return elem;
     }
 

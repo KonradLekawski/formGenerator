@@ -1,25 +1,29 @@
+import { FormView } from "/Form/FormView.js";
+
 export class Form {
-    constructor(id) {
+    constructor(idGenerator) {
         var self = this;
-        this.type = "form";
-        this.id = id;
-        this.name = name;
+        this._id = idGenerator.getNextId();
+        this.model = {
+            "fields" : []
+        };
+
         this.questions = [];
-        this.observers = [];
+        this.view = new FormView();
     }
 
     addQuestion(question) {
         this.questions.push(question);
+        this.model["fields"].push(this.questions.model);
+        this.view.addQuestion(question);
+        question.registerObserver(this);
     }
 
-    registerObserver(observer) {
-        this.observers.push(observer);
-    }
-    
-    notifyAll() {
-        for(let observer of this.observers) {
-            observer.update(self);
+    update() {
+        this.model["fields"] = [];
+        for(let question of this.questions) {
+            this.model["fields"].push(question.model);
         }
+        console.log(JSON.stringify(this.model));
     }
-
 }
