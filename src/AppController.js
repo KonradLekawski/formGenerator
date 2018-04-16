@@ -8,12 +8,21 @@ let idGenerator = new IdGenerator();
 
 let simpleElementFactory = new SimpleElementFactory(idGenerator);
 
-let q1 = new ShortTextQuestion(idGenerator, simpleElementFactory, "title1", "");
-let q2 = new ShortTextQuestion(idGenerator, simpleElementFactory, "title2", "dupa");
+let createButton = document.getElementById("createButton");
+createButton.addEventListener('click', createQuestion);
 
-let form = new Form(idGenerator);
+var form = new Form(idGenerator);
 
-form.addQuestion(q1);
-form.addQuestion(q2);
+function createQuestion() {
+    let model = document.getElementById("model").value;
+    let label = document.getElementById("label").value;
+    let defaultValue = document.getElementById("defaultValue").value;
+    let newQuestion = new ShortTextQuestion(idGenerator, simpleElementFactory, model, label, defaultValue);
+
+    form.addQuestion(newQuestion);
+    form.printToConsole();
+}
+
+form.printToConsole();
 
 document.getElementById("survey").appendChild(form.view.element);

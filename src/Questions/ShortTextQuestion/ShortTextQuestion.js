@@ -1,11 +1,13 @@
 import { ShortTextQuestionView } from "/Questions/ShortTextQuestion/ShortTextQuestionView.js";
 
 export class ShortTextQuestion {
-    constructor(idGenerator, simpleElementFactory, title, defaultValue) {
+    constructor(idGenerator, simpleElementFactory, model, title, defaultValue) {
         var self = this;
         this._simpleElementFactory = simpleElementFactory;
 
-        this.model = {};
+        this.model = {
+            "model": model
+        };
         this.observers = [];
 
         let titleView = this._simpleElementFactory.getSimpleElementView("title", [self], title);

@@ -11,7 +11,7 @@ export class TitleView {
     }
 
     createElement() {
-        let elem = document.createElement('p');
+        let elem = document.createElement('h3');
         let id = this.controller.model.id;
         return elem;
     }

@@ -2,13 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
     <title>Title</title>
 </head>
 <body>
-    <div class="main__container">
+    <div class="main_container">
         <div id="survey">
 
         </div>
+    </div>
+    <div class="questionCreator">
+        <h1>Question creator:</h1>
+        Question Type: <select id="questionType">
+            <option value="ShortTextQuestion">ShortTextQuestion</option>
+        </select>
+        Label: <input type="text" id="label">
+        Model: <input type="text" id="model">
+        Default Value: <input type="text" id="defaultValue">
+
+        <input type="submit" value="+" id="createButton">
     </div>
 
     <script type="module" src="AppController.js"></script>

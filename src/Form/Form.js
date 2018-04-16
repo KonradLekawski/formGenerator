@@ -24,6 +24,21 @@ export class Form {
         for(let question of this.questions) {
             this.model["fields"].push(question.model);
         }
-        console.log(JSON.stringify(this.model));
+        this.printToConsole();
+    }
+
+    toJson() {
+        let json = {};
+        for(let question of this.model.fields) {
+            json[question.model] = question.value;
+        }
+        return json;
+    }
+
+    printToConsole() {
+        console.log("schema:");
+        console.log(this.model);
+        console.log("answer:");
+        console.log(this.toJson());
     }
 }
