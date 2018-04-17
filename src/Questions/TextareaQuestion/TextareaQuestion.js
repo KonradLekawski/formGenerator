@@ -1,6 +1,6 @@
-import { ShortTextQuestionView } from "./ShortTextQuestionView.js";
+import { TextareaQuestionView } from "./TextareaQuestionView.js";
 
-export class ShortTextQuestion {
+export class TexareatQuestion {
     constructor(idGenerator, simpleElementFactory, model, title, defaultValue) {
         this._simpleElementFactory = simpleElementFactory;
 
@@ -10,14 +10,14 @@ export class ShortTextQuestion {
         this.observers = [];
 
         let titleView = this._simpleElementFactory.getSimpleElementView("title", [this], title);
-        let textInputView = this._simpleElementFactory.getSimpleElementView("text-input", [this], defaultValue);
+        let textareaInputView = this._simpleElementFactory.getSimpleElementView("textarea", [this], defaultValue);
 
-        this.view = new ShortTextQuestionView(titleView, textInputView);
+        this.view = new TextareaQuestionView(titleView, textareaInputView);
     }
 
     update(notifyingModel) {
         switch(notifyingModel.objectType) {
-            case "text-input":
+            case "textarea":
                 this.model["value"] = notifyingModel.value;
                 break;
             case "title":
@@ -34,7 +34,7 @@ export class ShortTextQuestion {
     registerObserver(observer) {
         this.observers.push(observer);
     }
-    
+
     notifyAll() {
         for(let observer of this.observers) {
             observer.update(self);
