@@ -1,8 +1,8 @@
-import { IdGenerator } from "/utils/IdGenerator.js";
-import { ShortTextQuestion } from "/Questions/ShortTextQuestion/ShortTextQuestion.js";
-import { SimpleElementFactory } from "/SimpleElements/SimpleElementFactory.js";
-import { Form } from "/Form/Form.js";
-import { FormView } from "/Form/FormView.js";
+import { IdGenerator } from "./utils/IdGenerator.js";
+import { ShortTextQuestion } from "./Questions/ShortTextQuestion/ShortTextQuestion.js";
+import { SimpleElementFactory } from "./SimpleElements/SimpleElementFactory.js";
+import { Form } from "./Form/Form.js";
+import { FormView } from "./Form/FormView.js";
 
 let idGenerator = new IdGenerator();
 

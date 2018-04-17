@@ -1,4 +1,4 @@
-import { ShortTextQuestionView } from "/Questions/ShortTextQuestion/ShortTextQuestionView.js";
+import { ShortTextQuestionView } from "./ShortTextQuestionView.js";
 
 export class ShortTextQuestion {
     constructor(idGenerator, simpleElementFactory, model, title, defaultValue) {

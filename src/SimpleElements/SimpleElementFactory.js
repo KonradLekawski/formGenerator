@@ -1,8 +1,8 @@
-import { IdGenerator } from "/utils/IdGenerator.js";
-import { GenericElementModel } from "/SimpleElements/GenericElementModel.js";
-import { OnChangeController } from "/SimpleElements/OnChangeController.js";
-import { TextInputView } from "/SimpleElements/TextInput/TextInputView.js";
-import { TitleView } from "/SimpleElements/Title/TitleView.js";
+import { IdGenerator } from "../utils/IdGenerator.js";
+import { GenericElementModel } from "./GenericElementModel.js";
+import { OnChangeController } from "./OnChangeController.js";
+import { TextInputView } from "../SimpleElements/TextInput/TextInputView.js";
+import { TitleView } from "../SimpleElements/Title/TitleView.js";
 
 export class SimpleElementFactory {
 

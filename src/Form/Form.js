@@ -1,4 +1,4 @@
-import { FormView } from "/Form/FormView.js";
+import { FormView } from "./FormView.js";
 
 export class Form {
     constructor(idGenerator) {
