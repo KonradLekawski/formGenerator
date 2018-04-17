@@ -1,21 +1,39 @@
-import {shortTextController} from "./shortTextFunctionalities/ShortTextController.js";
+import { IdGenerator } from "./utils/IdGenerator.js";
+import { ShortTextQuestion } from "./Questions/ShortTextQuestion/ShortTextQuestion.js";
+import { SimpleElementFactory } from "./SimpleElements/SimpleElementFactory.js";
+import { Form } from "./Form/Form.js";
+import { FormView } from "./Form/FormView.js";
 
-const AppController = (function (shortTextCTRL) {
-
-    {
-        // update view co zmiane w środku ?
-        document.querySelector('.survey').addEventListener('change', (e) => {
-            refresh();
-        });
-
-        // jakis button z formularzem?
-        document.querySelector('.add__shortText').addEventListener('click', (e) => {
-            shortTextCTRL.addShortText();
-        })
+const userInterfaceQuestionCreator = (function () {
+    return {
+        get: function () {
+            return {
+                model: document.getElementById("model").value,
+                label: document.getElementById("label").value,
+                defaultValue: document.getElementById("defaultValue").value
+            }
+        }
     }
+})();
 
-    function refresh() {
+const AppController = (function () {
+    let idGenerator = new IdGenerator();
+    let simpleElementFactory = new SimpleElementFactory(idGenerator);
+    const form = new Form(idGenerator);
 
+    const initialize = (function () {
+        document.getElementById("survey").appendChild(form.view.element);
+    })();
+
+    const setupListeners = (function () {
+        document.getElementById("createButton").addEventListener('click', createQuestion);
+    })();
+
+    function createQuestion() {
+        let values = userInterfaceQuestionCreator.get();
+        let newQuestion = new ShortTextQuestion(idGenerator, simpleElementFactory, values.model, values.label, values.defaultValue);
+
+        form.addQuestion(newQuestion);
+        form.printToConsole();
     }
-
-})(shortTextController);
+})();
