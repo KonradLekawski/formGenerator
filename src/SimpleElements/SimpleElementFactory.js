@@ -3,6 +3,7 @@ import { GenericElementModel } from "./GenericElementModel.js";
 import { OnChangeController } from "./OnChangeController.js";
 import { TextInputView } from "../SimpleElements/TextInput/TextInputView.js";
 import { TitleView } from "../SimpleElements/Title/TitleView.js";
+import { TextareaInputView } from "./TextInput/TextareaInputView.js";
 
 export class SimpleElementFactory {
 
@@ -21,7 +22,10 @@ export class SimpleElementFactory {
                 view = new TextInputView(controller, defaultValue);
                 break;
             case "title":
-                view = new TitleView(controller, defaultValue);
+                view = new TitleView(controller, defaultValue, true);
+                break;
+            case "textarea":
+                view = new TextareaInputView(controller, defaultValue);
                 break;
             default:
                 console.log("unknown type of model");

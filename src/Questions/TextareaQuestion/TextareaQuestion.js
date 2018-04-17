@@ -1,6 +1,6 @@
 import { TextareaQuestionView } from "./TextareaQuestionView.js";
 
-export class TexareatQuestion {
+export class TextareaQuestion {
     constructor(idGenerator, simpleElementFactory, model, title, defaultValue) {
         this._simpleElementFactory = simpleElementFactory;
 
