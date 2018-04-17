@@ -23,6 +23,4 @@ export class TitleView {
     update(model) {
         this.element.innerText = model.value;
     }
-
-
 }
