@@ -1,6 +1,5 @@
 export class OnChangeController {
     constructor(model) {
-        var self = this;
         this.model = model;
     }
 
@@ -19,6 +18,4 @@ export class OnChangeController {
         this.model.value = target.value;
         this.model.notifyAll();
     }
-
-
 }

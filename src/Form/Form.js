@@ -2,10 +2,9 @@ import { FormView } from "./FormView.js";
 
 export class Form {
     constructor(idGenerator) {
-        var self = this;
         this._id = idGenerator.getNextId();
         this.model = {
-            "fields" : []
+            fields: []
         };
 
         this.questions = [];
@@ -14,21 +13,22 @@ export class Form {
 
     addQuestion(question) {
         this.questions.push(question);
-        this.model["fields"].push(this.questions.model);
+        this.model.fields.push(question.model);
         this.view.addQuestion(question);
         question.registerObserver(this);
     }
 
     update() {
-        this.model["fields"] = [];
+        this.model.fields = [];
         for(let question of this.questions) {
-            this.model["fields"].push(question.model);
+            this.model.fields.push(question.model);
         }
         this.printToConsole();
     }
 
     toJson() {
         let json = {};
+        console.log(this.model.fields);
         for(let question of this.model.fields) {
             json[question.model] = question.value;
         }

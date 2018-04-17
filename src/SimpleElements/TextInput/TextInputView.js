@@ -24,7 +24,5 @@ export class TextInputView {
     update(model) {
         this.element.value = model.value;
     }
-
-
 }
 
