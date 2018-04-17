@@ -4,7 +4,7 @@ import { SimpleElementFactory } from "./SimpleElements/SimpleElementFactory.js";
 import { Form } from "./Form/Form.js";
 import { FormView } from "./Form/FormView.js";
 
-const userInterface = (function () {
+const userInterfaceQuestionCreator = (function () {
     return {
         get: function () {
             return {
@@ -30,7 +30,7 @@ const AppController = (function () {
     })();
 
     function createQuestion() {
-        let values = userInterface.get();
+        let values = userInterfaceQuestionCreator.get();
         let newQuestion = new ShortTextQuestion(idGenerator, simpleElementFactory, values.model, values.label, values.defaultValue);
 
         form.addQuestion(newQuestion);
