@@ -1,8 +1,10 @@
 import { IdGenerator } from "./utils/IdGenerator.js";
 import { ShortTextQuestion } from "./Questions/ShortTextQuestion/ShortTextQuestion.js";
+import { TextareaQuestion } from "./Questions/TextareaQuestion/TextareaQuestion.js";
 import { SimpleElementFactory } from "./SimpleElements/SimpleElementFactory.js";
 import { Form } from "./Form/Form.js";
 import { FormView } from "./Form/FormView.js";
+import {TextareaQuestionView} from "./Questions/TextareaQuestion/TextareaQuestionView";
 
 const userInterfaceQuestionCreator = (function () {
     return {
@@ -31,7 +33,7 @@ const AppController = (function () {
 
     function createQuestion() {
         let values = userInterfaceQuestionCreator.get();
-        let newQuestion = new ShortTextQuestion(idGenerator, simpleElementFactory, values.model, values.label, values.defaultValue);
+        let newQuestion = new TextareaQuestion(idGenerator, simpleElementFactory, values.model, values.label, values.defaultValue);
 
         form.addQuestion(newQuestion);
         form.printToConsole();
