@@ -3,7 +3,7 @@ import { GenericElementModel } from "./GenericElementModel.js";
 import { OnChangeController } from "./OnChangeController.js";
 import { TextInputView } from "../SimpleElements/TextInput/TextInputView.js";
 import { TitleView } from "../SimpleElements/Title/TitleView.js";
-import {TextareaInputView} from "./TextInput/TextareaInputView";
+import { TextareaInputView } from "./TextInput/TextareaInputView.js";
 
 export class SimpleElementFactory {
 

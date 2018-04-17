@@ -4,7 +4,7 @@ import { TextareaQuestion } from "./Questions/TextareaQuestion/TextareaQuestion.
 import { SimpleElementFactory } from "./SimpleElements/SimpleElementFactory.js";
 import { Form } from "./Form/Form.js";
 import { FormView } from "./Form/FormView.js";
-import {TextareaQuestionView} from "./Questions/TextareaQuestion/TextareaQuestionView";
+import { TextareaQuestionView } from "./Questions/TextareaQuestion/TextareaQuestionView.js";
 
 const userInterfaceQuestionCreator = (function () {
     return {
