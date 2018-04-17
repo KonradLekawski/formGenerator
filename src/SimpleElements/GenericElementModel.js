@@ -1,6 +1,5 @@
 export class GenericElementModel {
     constructor(id, value, type) {
-        var self = this;
         this.objectType = type;
         this.id = id;
         this.value = value;
