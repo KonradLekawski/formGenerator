@@ -9,6 +9,9 @@ export class OnChangeController {
             case "change":
             this.changeHandler(e.target);
                 break;
+            case "input":
+            this.inputHandler(e.target);
+                break;
             default:
             console.log(e.target);
         }
@@ -16,6 +19,11 @@ export class OnChangeController {
 
     changeHandler(target) {
         this.model.value = target.value;
+        this.model.notifyAll();
+    }
+
+    inputHandler(target) {
+        this.model.value = target.innerText;
         this.model.notifyAll();
     }
 }

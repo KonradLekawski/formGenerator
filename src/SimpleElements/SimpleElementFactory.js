@@ -21,7 +21,7 @@ export class SimpleElementFactory {
                 view = new TextInputView(controller, defaultValue);
                 break;
             case "title":
-                view = new TitleView(controller, defaultValue);
+                view = new TitleView(controller, defaultValue, true);
                 break;
             default:
                 console.log("unknown type of model");
