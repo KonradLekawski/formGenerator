@@ -4,25 +4,36 @@ import { SimpleElementFactory } from "./SimpleElements/SimpleElementFactory.js";
 import { Form } from "./Form/Form.js";
 import { FormView } from "./Form/FormView.js";
 
-let idGenerator = new IdGenerator();
+const userInterface = (function () {
+    return {
+        get: function () {
+            return {
+                model: document.getElementById("model").value,
+                label: document.getElementById("label").value,
+                defaultValue: document.getElementById("defaultValue").value
+            }
+        }
+    }
+})();
 
-let simpleElementFactory = new SimpleElementFactory(idGenerator);
+const AppController = (function () {
+    let idGenerator = new IdGenerator();
+    let simpleElementFactory = new SimpleElementFactory(idGenerator);
+    const form = new Form(idGenerator);
 
-let createButton = document.getElementById("createButton");
-createButton.addEventListener('click', createQuestion);
+    const initialize = (function () {
+        document.getElementById("survey").appendChild(form.view.element);
+    })();
 
-var form = new Form(idGenerator);
+    const setupListeners = (function () {
+        document.getElementById("createButton").addEventListener('click', createQuestion);
+    })();
 
-function createQuestion() {
-    let model = document.getElementById("model").value;
-    let label = document.getElementById("label").value;
-    let defaultValue = document.getElementById("defaultValue").value;
-    let newQuestion = new ShortTextQuestion(idGenerator, simpleElementFactory, model, label, defaultValue);
+    function createQuestion() {
+        let values = userInterface.get();
+        let newQuestion = new ShortTextQuestion(idGenerator, simpleElementFactory, values.model, values.label, values.defaultValue);
 
-    form.addQuestion(newQuestion);
-    form.printToConsole();
-}
-
-form.printToConsole();
-
-document.getElementById("survey").appendChild(form.view.element);
+        form.addQuestion(newQuestion);
+        form.printToConsole();
+    }
+})();
