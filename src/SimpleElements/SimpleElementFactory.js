@@ -15,14 +15,14 @@ export class SimpleElementFactory {
         let model = new GenericElementModel(id, defaultValue, type);
         let controller = new OnChangeController(model);
         
-        var view;
+        let view;
         switch(type) {
             case "text-input":
                 view = new TextInputView(controller, defaultValue);
                 break;
             case "title":
                 view = new TitleView(controller, defaultValue);
-                break
+                break;
             default:
                 console.log("unknown type of model");
         }
