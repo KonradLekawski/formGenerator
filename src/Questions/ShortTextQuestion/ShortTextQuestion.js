@@ -2,7 +2,6 @@ import { ShortTextQuestionView } from "./ShortTextQuestionView.js";
 
 export class ShortTextQuestion {
     constructor(idGenerator, simpleElementFactory, model, title, defaultValue) {
-        var self = this;
         this._simpleElementFactory = simpleElementFactory;
 
         this.model = {
@@ -10,8 +9,8 @@ export class ShortTextQuestion {
         };
         this.observers = [];
 
-        let titleView = this._simpleElementFactory.getSimpleElementView("title", [self], title);
-        let textInputView = this._simpleElementFactory.getSimpleElementView("text-input", [self], defaultValue);
+        let titleView = this._simpleElementFactory.getSimpleElementView("title", [this], title);
+        let textInputView = this._simpleElementFactory.getSimpleElementView("text-input", [this], defaultValue);
 
         this.view = new ShortTextQuestionView(titleView, textInputView);
     }
@@ -41,5 +40,4 @@ export class ShortTextQuestion {
             observer.update(self);
         }
     }
-
 }
