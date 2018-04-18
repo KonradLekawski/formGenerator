@@ -1,4 +1,5 @@
 import { ShortTextQuestionView } from "./ShortTextQuestionView.js";
+import { viewElementsTypes} from "../../SimpleElements/SimpleElementFactory";
 
 export class ShortTextQuestion {
     constructor(id, simpleElementFactory, model, title, defaultValue) {
@@ -10,18 +11,18 @@ export class ShortTextQuestion {
 
         this.observers = [];
 
-        let titleView = this._simpleElementFactory.getSimpleElementView("title", [this], title);
-        let textInputView = this._simpleElementFactory.getSimpleElementView("text-input", [this], defaultValue);
+        let titleView = this._simpleElementFactory.getSimpleElementView(viewElementsTypes.title, [this], title);
+        let textInputView = this._simpleElementFactory.getSimpleElementView(viewElementsTypes.textInput, [this], defaultValue);
 
         this.view = new ShortTextQuestionView(titleView, textInputView);
     }
 
     update(notifyingModel) {
         switch(notifyingModel.objectType) {
-            case "text-input":
+            case viewElementsTypes.textInput:
                 this.model.value = notifyingModel.value;
                 break;
-            case "title":
+            case viewElementsTypes.title:
                 this.model.label = notifyingModel.value;
                 break;
             default:
