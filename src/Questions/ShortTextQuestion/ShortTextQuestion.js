@@ -1,12 +1,13 @@
 import { ShortTextQuestionView } from "./ShortTextQuestionView.js";
 
 export class ShortTextQuestion {
-    constructor(idGenerator, simpleElementFactory, model, title, defaultValue) {
+    constructor(id, simpleElementFactory, model, title, defaultValue) {
         this._simpleElementFactory = simpleElementFactory;
 
         this.model = {
-            "model": model
+            model: model
         };
+
         this.observers = [];
 
         let titleView = this._simpleElementFactory.getSimpleElementView("title", [this], title);
@@ -18,12 +19,11 @@ export class ShortTextQuestion {
     update(notifyingModel) {
         switch(notifyingModel.objectType) {
             case "text-input":
-                this.model["value"] = notifyingModel.value;
+                this.model.value = notifyingModel.value;
                 break;
             case "title":
-                this.model["label"] = notifyingModel.value;
-                break
-
+                this.model.label = notifyingModel.value;
+                break;
             default:
                 console.log("unknown type of model");
         }
@@ -37,7 +37,7 @@ export class ShortTextQuestion {
     
     notifyAll() {
         for(let observer of this.observers) {
-            observer.update(self);
+            observer.update(this);
         }
     }
 }
