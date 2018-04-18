@@ -12,7 +12,7 @@ export class UpdateStrategiesFactory {
                 return updateByValue;
 
             case availableStrategies.updateRadioBoxState:
-                return updateByRadioBoxStrategy();
+                return updateByValue;
 
             default:
                 throw "> " + strategyType + " this strategyType is invalid";
@@ -39,6 +39,8 @@ export class UpdateStrategiesFactory {
                     lastTarget.value = 'off';
                     lastTarget = target;
                 }
+
+                model.value = target.value;
             }
         }
     }
