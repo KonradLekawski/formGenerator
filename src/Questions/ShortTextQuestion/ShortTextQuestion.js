@@ -1,5 +1,5 @@
 import { ShortTextQuestionView } from "./ShortTextQuestionView.js";
-import { viewElementsTypes} from "../../SimpleElements/SimpleElementFactory";
+import { viewElementsTypes} from "../../SimpleElements/SimpleElementFactory.js";
 
 export class ShortTextQuestion {
     constructor(id, simpleElementFactory, model, title, defaultValue) {
