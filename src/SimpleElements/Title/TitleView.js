@@ -17,7 +17,7 @@ export class TitleView {
     }
 
     registerEvents() {
-        this.element.addEventListener('change', this.controller);
+        this.element.addEventListener('change', this.controller.executeOnChangeEvent());
     }
 
     update(model) {

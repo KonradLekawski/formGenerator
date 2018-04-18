@@ -1,21 +1,22 @@
 export class OnChangeController {
-    constructor(model) {
+    constructor(model, strategy) {
         this.model = model;
+        this.strategy = strategy;
     }
 
-    handleEvent(e) {
-        e.stopPropagation();
-        switch(e.type) {
-            case "change":
-            this.changeHandler(e.target);
-                break;
-            default:
-            console.log(e.target);
-        }
-    }
+    executeOnChangeEvent() {
+        return (e) => {
+            e.stopPropagation();
 
-    changeHandler(target) {
-        this.model.value = target.value;
-        this.model.notifyAll();
+            switch(e.type) {
+                case "change":
+                    this.strategy(this.model, e);
+                    this.model.notifyAll();
+                    break;
+
+                default:
+                    console.log(e.target);
+            }
+        };
     }
 }

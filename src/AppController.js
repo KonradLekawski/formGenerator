@@ -18,7 +18,6 @@ const userInterfaceQuestionCreator = (function () {
 
 const AppController = (function () {
     let idGenerator = new IdGenerator();
-    let simpleElementFactory = new SimpleElementFactory(idGenerator);
     const form = new Form(idGenerator);
 
     const initialize = (function () {
@@ -31,6 +30,7 @@ const AppController = (function () {
 
     function createQuestion() {
         let values = userInterfaceQuestionCreator.get();
+        let simpleElementFactory = new SimpleElementFactory(idGenerator);
         let newQuestion = new ShortTextQuestion(idGenerator, simpleElementFactory, values.model, values.label, values.defaultValue);
 
         form.addQuestion(newQuestion);
