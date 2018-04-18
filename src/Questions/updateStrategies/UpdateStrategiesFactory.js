@@ -23,7 +23,7 @@ export class UpdateStrategiesFactory {
             model.value = target.value;
         }
         
-        function updateByRadioBoxStrategy() {
+        function updateByCheckBoxStrategy() {
             
         }
 
