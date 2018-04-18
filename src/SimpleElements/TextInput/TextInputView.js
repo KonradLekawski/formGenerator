@@ -18,7 +18,7 @@ export class TextInputView {
     }
 
     registerEvents() {
-        this.element.addEventListener('change', this.controller);
+        this.element.addEventListener('change', this.controller.executeOnChangeEvent());
     }
 
     update(model) {
