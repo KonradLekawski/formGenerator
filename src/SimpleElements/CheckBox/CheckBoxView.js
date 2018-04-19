@@ -1,4 +1,4 @@
-export class RadioButtonView {
+export class CheckBoxView {
 
     constructor(controller, value) {
         this.controller = controller;
@@ -13,10 +13,10 @@ export class RadioButtonView {
         let label = document.createElement('label');
         let text = document.createTextNode(this.value);
         label.appendChild(text);
-        console.log(this.value);
+
 
         let elem = document.createElement('input');
-        elem.type = "radio";
+        elem.type = "checkbox";
         elem.id = this.controller.model.id;
         elem.name = this.controller.model;
         elem.value = this.value;

@@ -1,4 +1,5 @@
 export class OnChangeController {
+
     constructor(model, strategy) {
         this.model = model;
         this.strategy = strategy;

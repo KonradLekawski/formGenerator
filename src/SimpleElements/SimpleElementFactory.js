@@ -5,12 +5,13 @@ import { TextInputView } from "../SimpleElements/TextInput/TextInputView.js";
 import { TitleView } from "../SimpleElements/Title/TitleView.js";
 import { availableStrategies, UpdateStrategiesFactory} from "../Questions/updateStrategies/UpdateStrategiesFactory.js";
 import {RadioButtonView} from "./RadioButton/RadioButtonView.js";
+import {CheckBoxView} from "./CheckBox/CheckBoxView.js";
 
 export const viewElementsTypes = (function () {
     return Object.freeze({
         textInput: 'text-input',
         title: 'title',
-        checkBoxInput: 'checkbox-input',
+        checkBox: 'checkbox',
         radio: 'radio'
     });
 })();
@@ -46,8 +47,8 @@ export class SimpleElementFactory {
                 case viewElementsTypes.radio:
                     return createRadioButtonView(model, defaultValue);
 
-                case viewElementsTypes.checkBoxInput:
-                    throw "not implemented";
+                case viewElementsTypes.checkBox:
+                    return createCheckBoxView(model, defaultValue);
 
                 default:
                     console.log("unknown type of model");
@@ -69,9 +70,15 @@ export class SimpleElementFactory {
             return new RadioButtonView(controller, beginValue);
         }
 
+        function createCheckBoxView(model, beginValue) {
+            let controller = createController(model, availableStrategies.updateByValue);
+            return new CheckBoxView(controller, beginValue);
+        }
+
         function createController(model, nameOfStrategy) {
             const strategy = UpdateStrategiesFactory.getStrategyByName(nameOfStrategy);
             return new OnChangeController(model, strategy);
         }
+
     }
 }

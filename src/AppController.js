@@ -4,6 +4,7 @@ import { SimpleElementFactory } from "./SimpleElements/SimpleElementFactory.js";
 import { Form } from "./Form/Form.js";
 import { FormView } from "./Form/FormView.js";
 import {RadioButtonQuestion} from "./Questions/RadioButtonQuestion/RadioButtonQuestion.js";
+import {CheckBoxQuestion} from "./Questions/CheckBoxQuestion/CheckBoxQuestion.js";
 
 const userInterfaceQuestionCreator = (function () {
     return {
@@ -22,7 +23,8 @@ const availableQuestionTypes = (function () {
     return Object.freeze({
         shortTextQuestion: 'ShortTextQuestion',
         radioButtonQuestion: 'RadioButtonQuestion',
-        textAreaQuestion: 'TextareaQuestion'
+        textAreaQuestion: 'TextareaQuestion',
+        checkBoxQuestion: 'CheckBoxQuestion'
     });
 })();
 
@@ -52,6 +54,10 @@ const AppController = (function () {
 
             case availableQuestionTypes.shortTextQuestion:
                 newQuestion = new ShortTextQuestion(idGenerator, simpleElementFactory, values.model, values.label, values.defaultValue);
+                break;
+
+            case availableQuestionTypes.checkBoxQuestion:
+                newQuestion = new CheckBoxQuestion(idGenerator, simpleElementFactory, values.model, values.label, ["dupa","cyce"]);
                 break;
 
         }
